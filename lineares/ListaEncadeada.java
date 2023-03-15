@@ -1,13 +1,13 @@
 package lineares;
 
-public class ListaEncadeada implements Lista {
-	private NoLista primeiro;
-	private NoLista ultimo;
+public class ListaEncadeada<T> implements Lista<T> {
+	private NoLista<T> primeiro;
+	private NoLista<T> ultimo;
 	private int qtdeElementos;
 
 	@Override
-	public void inserir(int valor) {
-		NoLista novo = new NoLista();
+	public void inserir(T valor) {
+		NoLista<T> novo = new NoLista<>();
 		novo.setInfo(valor);
 		if (this.estaVazia()) {
 			primeiro = novo;
@@ -19,11 +19,11 @@ public class ListaEncadeada implements Lista {
 	}
 
 	@Override
-	public int buscar(int valor) {
-		NoLista p = primeiro;
+	public int buscar(T valor) {
+		NoLista<T> p = primeiro;
 		int contador = 0;
 		while (p != null) {
-			if (p.getInfo() == valor) {
+			if (p.getInfo().equals(valor)) {
 				return contador;
 			}
 			p = p.getProx();
@@ -38,11 +38,11 @@ public class ListaEncadeada implements Lista {
 	}
 
 	@Override
-	public void retirar(int valor) { // contribuição Elaine
-		NoLista anterior = null;
-		NoLista p = primeiro;
+	public void retirar(T valor) { // contribuição Elaine
+		NoLista<T> anterior = null;
+		NoLista<T> p = primeiro;
 		for (int i = 0; i < this.getTamanho(); i++) {
-			if (p.getInfo() == valor) {
+			if (p.getInfo().equals(valor)) {
 				break; // sair do laço
 			}
 			anterior = p;
@@ -64,7 +64,7 @@ public class ListaEncadeada implements Lista {
 	@Override
 	public String exibir() { // contribuição Eduardo Lyra
 		String str = "[";
-		NoLista p = primeiro;
+		NoLista<T> p = primeiro;
 		while (p != null) {
 			str += p.getInfo() + ", ";
 			p = p.getProx();
@@ -73,9 +73,9 @@ public class ListaEncadeada implements Lista {
 	}
 
 	@Override
-	public Lista copiar() { // contribuição Guilherme Milani
-		NoLista atual = primeiro;
-		Lista lista = new ListaEncadeada();
+	public Lista<T> copiar() { // contribuição Guilherme Milani
+		NoLista<T> atual = primeiro;
+		Lista<T> lista = new ListaEncadeada<>();
 		for (int i = 0; i < this.qtdeElementos; i++) {
 			lista.inserir(atual.getInfo());
 			atual = atual.getProx();
@@ -84,7 +84,7 @@ public class ListaEncadeada implements Lista {
 	}
 
 	@Override
-	public void concatenar(Lista outra) {
+	public void concatenar(Lista<T> outra) {
 		for (int i = 0; i < outra.getTamanho(); i++) {
 			this.inserir(outra.pegar(i));
 		}
@@ -96,11 +96,11 @@ public class ListaEncadeada implements Lista {
 	}
 
 	@Override
-	public int pegar(int pos) { // Contribuição Adriel
+	public T pegar(int pos) { // Contribuição Adriel
 		if (pos < 0 || pos >= this.qtdeElementos) {
 			throw new IndexOutOfBoundsException("Pos=" + pos);
 		}
-		NoLista p = primeiro;
+		NoLista<T> p = primeiro;
 		int cont = 0;
 		while (p != null) {
 			if (cont == pos) {
@@ -109,14 +109,14 @@ public class ListaEncadeada implements Lista {
 			cont++;
 			p = p.getProx();
 		}
-		return -1; // nunca vai chegar aqui
+		return null; // nunca vai chegar aqui
 	}
 
 	@Override
-	public Lista dividir() {  // contribuição do Gustavo G
+	public Lista<T> dividir() {  // contribuição do Gustavo G
 		  int metade = getTamanho()/2;
-		  ListaEncadeada novaLista = new ListaEncadeada();
-		  NoLista no = primeiro;
+		  ListaEncadeada<T> novaLista = new ListaEncadeada<>();
+		  NoLista<T> no = primeiro;
 		  for (int i = 1; i < getTamanho(); i++) {
 		    if (i < metade) {
 		      no = no.getProx();

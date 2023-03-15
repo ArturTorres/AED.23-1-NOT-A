@@ -3,7 +3,7 @@ package lineares;
 public class TesteListaDinamica {
 
 		public static void main(String[] args) {
-			Lista lista = new ListaEncadeada();
+			Lista<Integer> lista = new ListaEncadeada<>();
 			System.out.println("Lista original vazia. Tamanho = "+lista.getTamanho());
 			lista.inserir(50);
 			lista.inserir(-15);
@@ -34,7 +34,7 @@ public class TesteListaDinamica {
 			//System.out.println("Pegar pela posi��o 20 = "+lista.pegar(20));
 			
 			System.out.println("\nNovos testes---------");
-			Lista lista1 = new ListaEncadeada();
+			Lista<Integer> lista1 = new ListaEncadeada<>();
 			lista1.inserir(50);
 			lista1.inserir(-15);
 			lista1.inserir(12);
@@ -43,7 +43,7 @@ public class TesteListaDinamica {
 			lista1.inserir(57);
 			lista1.inserir(25);
 			System.out.println("Lista 1 = "+lista1.exibir());
-			Lista lista2 = lista1.dividir();
+			Lista<Integer> lista2 = lista1.dividir();
 			System.out.println("Dividir Lista 1");
 			System.out.println("Lista 1 = "+lista1.exibir());
 			System.out.println("Lista 1 tam = "+lista1.getTamanho());
