@@ -17,5 +17,13 @@ public class TesteArvoreBinaria {
 		arvore.setRaiz(no1);
 		System.out.println(arvore.toString());
 		System.out.println(arvore.pertence(6).getInfo());
+
+		ArvoreBST<Integer> arvore2 = new ArvoreBST<Integer>();
+		arvore2.inserir(50);
+		arvore2.inserir(80);
+		arvore2.inserir(70);
+		arvore2.inserir(30);
+		arvore2.inserir(35);
+		System.out.println(arvore2.toString());
 	}
 }
